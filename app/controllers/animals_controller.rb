@@ -1,5 +1,6 @@
 class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  before_action :set_species_list, only: [:new, :edit, :update, :create]
 
   before_filter :load_zoo
 
@@ -54,19 +55,22 @@ class AnimalsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_animal
-      @animal = Animal.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_animal
+    @animal = Animal.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def animal_params
-      params.require(:animal).permit(:name, species_attributes: [:name])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def animal_params
+    params.require(:animal).permit(:name, species_attributes: [:name])
+  end
 
-    def load_zoo
-      @zoo = Zoo.find(params[:zoo_id])
-    end
+  def load_zoo
+    @zoo = Zoo.find(params[:zoo_id])
+  end
 
+  def set_species_list
+    @species_list = Species.where.not(name: nil)
+  end
 
 end

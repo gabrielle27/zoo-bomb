@@ -11,7 +11,7 @@
     %tbody
       - @animals.each do |animal|
         %tr
-          %td #{animal.name}
+          %td #{animal}
           %td #{animal.species}
           %td
             = link_to "Show", zoo_animal_path(animal.zoo_id, animal)

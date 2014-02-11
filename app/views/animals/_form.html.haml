@@ -25,7 +25,7 @@
     = f.submit class: "btn btn-default"
 
 :javascript
-  species_list = [ #{ Species.where.not(name: nil).map{|s| '"' + s.to_s.html_safe + '"' }.join(',') } ];
+  species_list = [ #{ @species_list.map{|s| '"' + s.to_s.html_safe + '"' }.join(',') } ];
   $("#animal_species_attributes_name").autocomplete({
     source: species_list
   });

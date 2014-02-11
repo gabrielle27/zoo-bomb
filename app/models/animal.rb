@@ -5,6 +5,10 @@ class Animal < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def to_s
+    name
+  end
+
   private
 
   # Private: Find or create the approprate species record and link to the animal

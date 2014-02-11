@@ -1,11 +1,14 @@
 class Zoo < ActiveRecord::Base
   has_many :animals, dependent: :destroy
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
   # Public: override to_s to return the name of the zoo
   # force every zoo name to format "Xyz Zoo"
+  # examples:
+  # Chicago Zoo => Chicago Zoo
+  # Chicago     => Chicago Zoo
+  # Kalamazoo   => Kalamazoo Zoo
   def to_s
     name.gsub(/\sZoo$/i, '') + " Zoo"
   end

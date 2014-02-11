@@ -20,7 +20,7 @@
             %span.icon-bar
           = link_to "ZooBomb", root_path, {class: "navbar-brand"}
         .navbar-collapse.collapse
-          - if Zoo.count
+          - if Zoo.count > 0
             %ul.nav.navbar-nav
               %li.dropdown
                 = link_to "#", { class: "dropdown-toggle", :'data-toggle' => "dropdown" }  do

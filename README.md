@@ -16,7 +16,7 @@ Rails application for keeping a catalog of zoos.
 
 ## External Services
 
-* PostGreSQL 9.3.2
+* PostgreSQL 9.3.2
 
 
 ## Sandbox Hosting

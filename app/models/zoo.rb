@@ -10,12 +10,12 @@ class Zoo < ActiveRecord::Base
   # Chicago     => Chicago Zoo
   # Kalamazoo   => Kalamazoo Zoo
   def to_s
-    name.gsub(/\sZoo$/i, '') + " Zoo"
+    name.sub(/\sZoo$/i, '') + " Zoo"
   end
 
   # Public: returns the number of unique species for this zoo
   def unique_species_count
-    Animal.select("DISTINCT species_id").where( zoo_id: self.id ).count()
+    Animal.select("DISTINCT species_id").where(zoo_id: self.id).count
   end
 
 end

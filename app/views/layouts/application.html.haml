@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %title ZooBomb
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  .container
+    .navbar.navbar-default{role: "navigation"}
+      .container-fluid
+        .navbar-header
+          %button{type: "button",
+            class: "navbar-toggle",
+            :'data-toggle' => "collapse",
+            :'data-target' => "navbar-collapse" }
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "ZooBomb", root_path, {class: "navbar-brand"}
+        .navbar-collapse.collapse
+          - if Zoo.count
+            %ul.nav.navbar-nav
+              %li.dropdown
+                = link_to "#", { class: "dropdown-toggle", :'data-toggle' => "dropdown" }  do
+                  - if @zoo.try(:persisted?)
+                    #{@zoo}
+                  - else
+                    Choose Zoo
+                  %b.caret
+                %ul.dropdown-menu
+                  - Zoo.all.each do |z|
+                    %li
+                      = link_to "#{z}", zoo_path(z)
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to "Gabrielle DeWitt", "http://www.linkedin.com/in/gabrielledewitt"
+
+    .jumbotron
+      = yield
+

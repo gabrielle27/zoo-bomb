@@ -1,0 +1,17 @@
+%p{id:"notice", class: "text-info"}
+  = notice
+
+%p
+  %h1 #{@zoo}
+  %br
+  %strong Uniquie Species:
+  = @zoo.unique_species_count
+
+= link_to "View Animals", zoo_animals_path(@zoo)
+
+%br
+%br
+
+= succeed " |" do
+  = link_to "Edit Zoo", edit_zoo_path(@zoo)
+= link_to "View Zoo List", zoos_path

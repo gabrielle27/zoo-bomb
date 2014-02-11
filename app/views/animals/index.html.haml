@@ -1,0 +1,30 @@
+%h1 Animals at #{@zoo}
+
+- if @animals.size > 0
+  %table.table-hover.table-striped.table-bordered
+    %thead
+      %tr
+        %th Name
+        %th Species
+        %th{ colspan:3 }
+
+    %tbody
+      - @animals.each do |animal|
+        %tr
+          %td #{animal.name}
+          %td #{animal.species}
+          %td
+            = link_to "Show", zoo_animal_path(animal.zoo_id, animal)
+          %td
+            = link_to "Edit", edit_zoo_animal_path(animal.zoo_id, animal)
+          %td
+            = link_to "Delete", zoo_animal_path(animal.zoo_id, animal), method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  %p There are no animals at this zoo
+
+%br
+
+= link_to "Add an Animal", new_zoo_animal_path(@zoo)
+%br
+%br
+= link_to "Back to Zoo List", zoo_path(@zoo)

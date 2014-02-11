@@ -1,0 +1,14 @@
+%p{ id: notice, class: "text-info" }
+  = notice
+
+%p
+  %strong Name:
+  = @animal.name
+
+%p
+  %strong Species:
+  = @animal.species
+
+= succeed " |" do
+  = link_to "Edit Animal", edit_zoo_animal_path(@zoo, @animal)
+= link_to "Back to Animal List", zoo_animals_path

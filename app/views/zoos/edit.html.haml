@@ -1,0 +1,10 @@
+%h1 Edit #{@zoo}
+
+= render "form"
+
+%br
+%br
+
+= succeed " |" do
+  = link_to "Show Zoo", @zoo
+= link_to "Back to Zoo List", zoos_path

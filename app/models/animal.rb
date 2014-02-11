@@ -1,7 +1,9 @@
 class Animal < ActiveRecord::Base
-  belongs_to :zoo
-  belongs_to :species, autosave: true
+  belongs_to :zoo, inverse_of: :animals
+  belongs_to :species, inverse_of: :animals, autosave: true
   accepts_nested_attributes_for :species
+
+  default_scope { order('name ASC') }
 
   validates :name, presence: true
 

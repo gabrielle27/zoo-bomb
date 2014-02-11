@@ -1,7 +1,9 @@
 class Zoo < ActiveRecord::Base
-  has_many :animals, dependent: :destroy
+  has_many :animals, inverse_of: :zoo, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+
+  default_scope { order('name ASC') }
 
   # Public: override to_s to return the name of the zoo
   # force every zoo name to format "Xyz Zoo"

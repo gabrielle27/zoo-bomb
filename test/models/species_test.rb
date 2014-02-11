@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class SpeciesTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @species = animals(:one)
+  end
+
+  test "should get name" do
+    assert @species.to_s == @species.name
+  end
 end

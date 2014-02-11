@@ -15,7 +15,7 @@ class ZooTest < ActiveSupport::TestCase
     assert @zoo.to_s == @zoo.name + " Zoo"
   end
 
-  test "should get uniqe species" do
+  test "should get unique species" do
     # Zoo - with no animals
     @zoo  = FactoryGirl::create(:zoo, name: "Portland")
     assert @zoo.unique_species_count == 0
